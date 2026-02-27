@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Maison N. — Événements privés sur mesure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brun: #3a1a08;
+      --brun-clair: #5c2e10;
+      --creme: #e8d9c4;
+      --creme-clair: #f5ede0;
+      --or: #c9a96e;
+      --texte: #2a1005;
+      --max-width: 1100px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--creme-clair);
+      color: var(--texte);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(245, 237, 224, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(58,26,8,0.1);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 2rem;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--brun);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brun);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--creme-clair);
+      background: var(--brun);
+      padding: 0.65rem 1.4rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .nav-cta:hover { background: var(--brun-clair); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background-color: var(--brun);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60%; height: 140%;
+      background: radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .edition-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .edition-tag::before {
+      content: '';
+      display: block;
+      width: 2rem; height: 1px;
+      background: var(--or);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5.5vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--creme);
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--or); }
+
+    .hero-sub {
+      font-size: 0.85rem;
+      line-height: 1.9;
+      color: rgba(232,217,196,0.6);
+      max-width: 420px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(10rem, 20vw, 22rem);
+      font-weight: 300;
+      color: rgba(232,217,196,0.04);
+      line-height: 1;
+      user-select: none;
+      position: absolute;
+      right: -2rem;
+      bottom: -3rem;
+      pointer-events: none;
+    }
+
+    /* BOUTONS */
+    .btn-primary {
+      background: var(--or);
+      color: var(--brun);
+      padding: 1rem 2.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--creme); }
+
+    .btn-secondary {
+      border: 1px solid rgba(232,217,196,0.3);
+      color: var(--creme);
+      padding: 1rem 2.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--creme); }
+
+    /* SECTIONS */
+    section { padding: 7rem 2rem; }
+
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 2rem; height: 1px;
+      background: var(--or);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--brun);
+      margin-bottom: 1.5rem;
+    }
+
+    h2 em { font-style: italic; color: var(--brun-clair); }
+
+    /* SERVICES */
+    .services { background: var(--creme-clair); }
+
+    .services-intro { max-width: 620px; margin-bottom: 4rem; }
+
+    .services-intro p {
+      font-size: 0.88rem;
+      line-height: 1.9;
+      color: rgba(42,16,5,0.6);
+      margin-top: 1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--brun);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s;
+    }
+
+    .service-card:hover { transform: translateY(-4px); }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--or);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(232,217,196,0.1);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--creme);
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: rgba(232,217,196,0.55);
+    }
+
+    /* RÉALISATIONS */
+    .realisations { background: white; }
+
+    .realisations-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+
+    .realisation-item {
+      border-top: 1px solid rgba(58,26,8,0.12);
+      padding-top: 2rem;
+    }
+
+    .realisation-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1rem;
+    }
+
+    .realisation-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--brun);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .realisation-item p {
+      font-size: 0.82rem;
+      line-height: 1.85;
+      color: rgba(42,16,5,0.6);
+    }
+
+    .realisation-img {
+      width: 100%;
+      height: 260px;
+      background: var(--creme);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .realisation-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: rgba(58,26,8,0.3);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      width: 100%;
+      height: 100%;
+      background: var(--creme);
+    }
+
+    .ph-icon { font-size: 1.8rem; opacity: 0.2; }
+
+    /* MÉTHODE */
+    .methode { background: var(--brun); }
+    .methode h2 { color: var(--creme); }
+    .methode .section-label { color: var(--or); }
+    .methode .section-label::before { background: var(--or); }
+
+    .methode-intro {
+      font-size: 0.88rem;
+      line-height: 1.9;
+      color: rgba(232,217,196,0.5);
+      max-width: 500px;
+      margin-bottom: 5rem;
+    }
+
+    .methode-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+      border-top: 1px solid rgba(232,217,196,0.1);
+      padding-top: 3rem;
+    }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--or);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--creme);
+      margin-bottom: 0.8rem;
+    }
+
+    .step p {
+      font-size: 0.78rem;
+      line-height: 1.85;
+      color: rgba(232,217,196,0.45);
+    }
+
+    /* POURQUOI */
+    .pourquoi { background: var(--creme-clair); }
+
+    .pourquoi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .argument {
+      padding: 2.5rem;
+      border: 1px solid rgba(58,26,8,0.1);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .argument:hover { border-color: var(--or); transform: translateY(-2px); }
+
+    .argument-icon {
+      font-size: 1.2rem;
+      color: var(--or);
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    .argument h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--brun);
+      margin-bottom: 0.8rem;
+    }
+
+    .argument p {
+      font-size: 0.8rem;
+      line-height: 1.85;
+      color: rgba(42,16,5,0.55);
+    }
+
+    /* TÉMOIGNAGE */
+    .temoignage {
+      background: var(--brun);
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem;
+      color: var(--or);
+      opacity: 0.25;
+      line-height: 0.5;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 0 auto 3rem;
+    }
+
+    .temoignage-author {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--or);
+    }
+
+    .temoignage-author span {
+      display: block;
+      color: rgba(232,217,196,0.35);
+      margin-top: 0.4rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+    }
+
+    /* FAQ */
+    .faq { background: white; }
+
+    .faq-list { margin-top: 4rem; max-width: 760px; }
+
+    .faq-item {
+      border-top: 1px solid rgba(58,26,8,0.1);
+      padding: 1.8rem 0;
+      cursor: pointer;
+    }
+
+    .faq-item:last-child { border-bottom: 1px solid rgba(58,26,8,0.1); }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--brun);
+    }
+
+    .faq-icon {
+      font-size: 1.3rem;
+      color: var(--or);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 1rem;
+      line-height: 1;
+    }
+
+    .faq-answer {
+      font-size: 0.82rem;
+      line-height: 1.85;
+      color: rgba(42,16,5,0.6);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer { max-height: 300px; padding-top: 1rem; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* NEWSLETTER — colonne unique */
+    .newsletter {
+      background: var(--brun);
+      padding: 7rem 2rem;
+    }
+
+    .newsletter-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .newsletter h2 { color: var(--creme); }
+    .newsletter .section-label { color: var(--or); }
+    .newsletter .section-label::before { background: var(--or); }
+
+    .newsletter-sub {
+      font-size: 0.85rem;
+      line-height: 1.9;
+      color: rgba(232,217,196,0.5);
+      margin-top: 1rem;
+      max-width: 560px;
+    }
+
+    .newsletter-avantages {
+      list-style: none;
+      margin-top: 2rem;
+      max-width: 560px;
+    }
+
+    .newsletter-avantages li {
+      font-size: 0.78rem;
+      color: rgba(232,217,196,0.5);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(232,217,196,0.07);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .newsletter-avantages li::before {
+      content: '✦';
+      color: var(--or);
+      font-size: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 480px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .form-group label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(232,217,196,0.45);
+    }
+
+    .form-group input[type="email"] {
+      background: rgba(232,217,196,0.06);
+      border: 1px solid rgba(232,217,196,0.15);
+      color: var(--creme);
+      padding: 1rem 1.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+
+    .form-group input[type="email"]:focus { border-color: var(--or); }
+    .form-group input[type="email"]::placeholder { color: rgba(232,217,196,0.2); }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.72rem;
+      color: rgba(232,217,196,0.35);
+      line-height: 1.6;
+    }
+
+    .checkbox-group input { margin-top: 3px; flex-shrink: 0; }
+
+    .btn-form {
+      background: var(--or);
+      color: var(--brun);
+      padding: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .btn-form:hover { background: var(--creme); }
+
+    /* FOOTER */
+    footer { background: #1e0b02; padding: 2.5rem 2rem; }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--creme);
+      opacity: 0.5;
+    }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+    .footer-links a {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(232,217,196,0.25);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--or); }
+
+    .footer-copy {
+      font-size: 0.62rem;
+      color: rgba(232,217,196,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      opacity: 0;
+      animation: fadeUp 0.9s forwards;
+    }
+
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .realisations-grid { grid-template-columns: 1fr; }
+      .methode-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .pourquoi-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 5rem 1.5rem; }
+      .pourquoi-grid { grid-template-columns: 1fr; }
+      .methode-steps { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">La Maison N.</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#temoignage">Témoignages</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#newsletter" class="nav-cta">Rejoindre la newsletter</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="edition-tag">Événements privés sur mesure · Paris & au-delà</div>
+      <h1>Chaque moment est une <em>édition limitée.</em></h1>
+      <p class="hero-sub">Je crée des événements qui ne ressemblent qu'à ceux qui les vivent — pensés dans les moindres détails, pour que ce soit gravé.</p>
+      <div class="hero-btns">
+        <a href="#newsletter" class="btn-primary">Discutons de votre projet</a>
+        <a href="#realisations" class="btn-secondary">Voir les éditions</a>
+      </div>
+      <div class="hero-number">N.</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-intro">
+        <div class="section-label">Ce que je peux créer pour vous</div>
+        <h2>Des célébrations qui <em>marquent</em> les esprits</h2>
+        <p>Que vous souhaitiez organiser un anniversaire intime ou une surprise d'exception, chaque détail est pensé pour la personnalité de celui ou celle qu'on célèbre.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3>Anniversaires & soirées privatisées</h3>
+          <p>Salle privatisée, décoration sur-mesure, ambiance unique. Chaque détail reflète la personnalité de l'heureux élu — des lettres calligraphiées aux playlists pensées pour eux.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3>Weekends & escapades</h3>
+          <p>Organisation complète d'un weekend d'exception — hébergement, activités surprises, logistique de groupe. Vous profitez, je gère.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3>Cadeaux surprises personnalisés</h3>
+          <p>Magazines sur mesure, montages vidéo émouvants, reportages people, livres de souvenirs... Des surprises qui touchent le cœur et restent longtemps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÉALISATIONS -->
+  <section class="realisations" id="realisations">
+    <div class="container">
+      <div class="section-label">Les éditions passées</div>
+      <h2>Chaque projet est <em>unique.</em></h2>
+      <div class="realisations-grid">
+
+        <div class="realisation-item">
+          <div class="realisation-img">
+            <img src="images/mur.jpeg" alt="Mur de photos anniversaire 23 ans Paris">
+          </div>
+          <div class="realisation-tag">Édition 001 · Septembre 2025 · Paris</div>
+          <h3>Anniversaire 23 ans — Salle privatisée</h3>
+          <p>Une quarantaine d'amis, une salle privatisée à Paris, et une idée simple : dire à voix haute ce qu'on garde d'habitude pour soi. 40 enveloppes dorées, 40 lettres d'amitié — une pour chaque invité.</p>
+        </div>
+
+        <div class="realisation-item">
+          <div class="realisation-img">
+            <img src="images/saintmichel.jpeg" alt="Anniversaire 80 ans en famille">
+          </div>
+          <div class="realisation-tag">Édition 002 · En cours · Paris</div>
+          <h3>Anniversaire 80 ans en famille</h3>
+          <p>Quatre générations autour d'une même table. Organisation d'un dîner de famille au restaurant pour célébrer les 80 ans d'une grand-mère — simple en apparence, parfaitement orchestré dans les détails.</p>
+        </div>
+
+        <div class="realisation-item">
+          <div class="realisation-img">
+            <img src="images/majorque.jpeg" alt="Weekend d'anniversaire à Majorque">
+          </div>
+          <div class="realisation-tag">Édition 003 · 2025 · Majorque</div>
+          <h3>Anniversaire 60 ans — Weekend à Majorque</h3>
+          <p>Organisation complète d'un weekend de 4 jours pour une dizaine de personnes. Magazine personnalisé à l'effigie de l'élue, reportage people, activités surprises — une vie entière résumée en une semaine, dans une île.</p>
+        </div>
+
+        <div class="realisation-item">
+          <div class="realisation-img">
+            <img src="images/barbecue.jpeg" alt="Anniversaire surprise 75 ans">
+          </div>
+          <div class="realisation-tag">Édition 004 · En cours · Paris</div>
+          <h3>Anniversaire surprise 75 ans</h3>
+          <p>Elle les a gardés enfants. Ils reviennent adultes pour lui offrir un moment qu'elle n'attendait pas. Organisation d'une réunion surprise avec tous les enfants qu'elle a accompagnés.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <section class="methode" id="methode">
+    <div class="container">
+      <div class="section-label">Comment ça se passe</div>
+      <h2 style="color:var(--creme);">De votre idée à <em style="color:var(--or);">l'instant parfait</em></h2>
+      <p class="methode-intro">Un accompagnement sur mesure, de la première conversation au jour J. Vous restez informé à chaque étape — sans le stress de la coordination.</p>
+      <div class="methode-steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Premier échange</h3>
+          <p>On parle de la personne à célébrer, de vos envies, de votre budget. C'est le moment de tout dire — il n'y a pas de mauvaise idée.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Création du concept</h3>
+          <p>Je conçois un concept personnalisé avec des idées originales adaptées à la personnalité de l'élu. Chaque événement a son angle unique.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Suivi régulier</h3>
+          <p>Réunions et échanges pour affiner les détails au fil des semaines. Vous restez dans la boucle sans porter le poids de l'organisation.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Le jour J</h3>
+          <p>Je m'occupe de tout. Vous profitez pleinement de ce moment avec vos proches — sans regarder votre téléphone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI -->
+  <section class="pourquoi" id="pourquoi">
+    <div class="container">
+      <div class="section-label">Pourquoi La Maison N.</div>
+      <h2>Ce qui fait la <em>différence</em></h2>
+      <div class="pourquoi-grid">
+        <div class="argument">
+          <div class="argument-icon">✦</div>
+          <h3>Personnalisation totale</h3>
+          <p>Aucun projet ne se ressemble. Chaque événement est conçu autour d'une personne — sa personnalité, son histoire, ses proches.</p>
+        </div>
+        <div class="argument">
+          <div class="argument-icon">✦</div>
+          <h3>Zéro stress</h3>
+          <p>Je gère la coordination, la logistique et les imprévus. Vous n'avez qu'à être présent le jour J.</p>
+        </div>
+        <div class="argument">
+          <div class="argument-icon">✦</div>
+          <h3>Gain de temps précieux</h3>
+          <p>Organiser un événement mémorable demande des semaines. Je m'en occupe pendant que vous continuez votre vie.</p>
+        </div>
+        <div class="argument">
+          <div class="argument-icon">✦</div>
+          <h3>Accompagnement humain</h3>
+          <p>Un interlocuteur unique, disponible et bienveillant. Pas une agence — une personne qui comprend ce que vous voulez créer.</p>
+        </div>
+        <div class="argument">
+          <div class="argument-icon">✦</div>
+          <h3>L'émotion avant tout</h3>
+          <p>Je ne crée pas des événements beaux — je crée des moments que les gens racontent encore des années après.</p>
+        </div>
+        <div class="argument">
+          <div class="argument-icon">✦</div>
+          <h3>Sur mesure & accessible</h3>
+          <p>Un service personnalisé sans le budget d'une grande agence. Chaque projet est adapté à vos moyens et à vos ambitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGE -->
+  <section class="temoignage" id="temoignage">
+    <span class="quote-mark">"</span>
+    <blockquote>Cet anniversaire était magique. Les lettres personnalisées ont apporté une émotion particulière à la soirée. L'ambiance était au rendez-vous, tout le monde était heureux de lire ses petits mots au fil de l'événement.</blockquote>
+    <div class="temoignage-author">
+      Cyril D.
+      <span>Invité · Anniversaire 23 ans · Paris, Septembre 2025</span>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-label">Questions fréquentes</div>
+      <h2>Toutes vos <em>questions</em></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">Quel est votre niveau d'expérience ?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">J'ai organisé plusieurs événements privés à Paris et à l'étranger — des soirées d'anniversaire intimistes aux weekends à Majorque. Chaque projet m'a permis de développer une méthode rigoureuse et un réseau de prestataires de confiance.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Combien de temps à l'avance dois-je vous contacter ?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Pour les événements simples (restaurant, petit groupe), 3 à 4 semaines suffisent. Pour les projets plus complexes comme un weekend à l'étranger ou un magazine personnalisé, comptez 2 à 3 mois.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Quels types d'événements organisez-vous ?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Anniversaires de tous âges, weekends d'exception, soirées privatisées, cadeaux surprises personnalisés (magazines, montages vidéo, reportages), réunions de famille. Si c'est intime et sur mesure, c'est mon univers.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Comment se passe le suivi pendant l'organisation ?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Selon le projet, on se retrouve en réunion (en personne ou en visio) et j'utilise des groupes WhatsApp pour tenir tout le monde informé. Vous avez toujours une visibilité claire sur où on en est.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Travaillez-vous uniquement à Paris ?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Non — j'organise des événements partout en France et à l'étranger. Mon dernier projet hors Paris s'est déroulé à Majorque. Si le projet le demande, je m'adapte.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Que se passe-t-il si je veux annuler ou reporter ?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">On en discute ensemble dès le début du projet. Chaque situation est différente, et je m'adapte autant que possible. La transparence fait partie de ma façon de travailler.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter" id="newsletter">
+    <div class="newsletter-inner">
+      <div>
+        <div class="section-label">Restons en contact</div>
+        <h2 style="color:var(--creme);">Des idées exclusives <em style="color:var(--or);">chaque mois</em></h2>
+        <p class="newsletter-sub">Recevez mes meilleures inspirations pour organiser des événements mémorables — idées de cadeaux, concepts originaux, coulisses des éditions en cours.</p>
+        <ul class="newsletter-avantages">
+          <li>Idées originales pour personnaliser vos événements</li>
+          <li>Conseils pratiques pour organiser sans stress</li>
+          <li>Inspirations de surprises qui marquent les esprits</li>
+          <li>Coulisses des éditions La Maison N. en avant-première</li>
+        </ul>
+      </div>
+      <div>
+        <form class="newsletter-form" onsubmit="return false;">
+          <div class="form-group">
+            <label>Votre adresse email</label>
+            <input type="email" placeholder="votre@email.com">
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="consent">
+            <label for="consent">J'accepte de recevoir les emails de La Maison N. et d'être recontacté(e) pour un projet.</label>
+          </div>
+          <button type="submit" class="btn-form">Rejoindre la newsletter ✦</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">La Maison N.</div>
+      <ul class="footer-links">
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+      </ul>
+      <div class="footer-copy">© 2025 La Maison N. Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .realisation-item, .step, .argument').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
